@@ -15,6 +15,26 @@
           message.classList.add('hidden');
         }
       }, 7000);
+
+      document.addEventListener('keydown', async (event) => {
+        const isFullscreenShortcut = event.shiftKey && event.key.toLowerCase() === 'f' && (event.metaKey || event.ctrlKey);
+
+        if (!isFullscreenShortcut) {
+          return;
+        }
+
+        event.preventDefault();
+
+        try {
+          if (!document.fullscreenElement) {
+            await document.documentElement.requestFullscreen();
+          } else {
+            await document.exitFullscreen();
+          }
+        } catch (error) {
+          console.error('Fullscreen is not available in this browser.', error);
+        }
+      });
     </script>
 </body>
 </html>

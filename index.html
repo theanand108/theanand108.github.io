@@ -8,12 +8,12 @@
 </head>
 <body>
     <div class="message">Take a quiet break from the exhausted world.</div>
+    <div class="shortcut-hint">Cmd + Shift + F on Mac<br>Ctrl + Shift + F on Windows/Linux</div>
     <script>
       setTimeout(() => {
-        const message = document.querySelector('.message');
-        if (message) {
-          message.classList.add('hidden');
-        }
+        document.querySelectorAll('.message, .shortcut-hint').forEach((element) => {
+          element.classList.add('hidden');
+        });
       }, 7000);
 
       document.addEventListener('keydown', async (event) => {
